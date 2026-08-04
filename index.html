@@ -3,28 +3,342 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Study &#9997;</title>
+
+    <title>Study ✍</title>
+    <link rel="preconnect" href="https://googleapis.com" />
+    <link rel="preconnect" href="https://gstatic.com" crossorigin />
+    <link
+      href="https://googleapis.com/css2?family=Fredoka:wght@600&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
     <style>
+      :root {
+        --effect-duration: 4.5s; /* Chỉ cần sửa số này */
+      }
       h1 {
         font-family: "Times New Roman", Times, serif;
       }
+
       h2 {
-        font-style: bold;
         font-family: "Times New Roman", Times, serif;
       }
+
       p {
         font-size: 18px;
       }
+
+      /*================================================*/
+      /* WEB THẬT                                       */
+      /*================================================*/
+
+      #main-content {
+        position: relative;
+        z-index: 1;
+      }
+
+      /*================================================*/
+      /* CHO PHÉP CSS ANIMATE BIẾN --r                  */
+      /*================================================*/
+
+      @property --r {
+        syntax: "<length>";
+        inherits: false;
+        initial-value: 0px;
+      }
+
+      /*================================================*/
+      /* MÀN HÌNH CHÀO                                  */
+      /*================================================*/
+
+      #welcome-screen {
+        position: fixed;
+        inset: 0;
+
+        background: url("./img/backtrick.png") no-repeat center;
+        background-size: 100% 100%;
+
+        z-index: 9999;
+
+        --x: 50%;
+        --y: 50%;
+        --r: 0px;
+
+        /* Khoét lỗ tròn */
+
+        -webkit-mask: radial-gradient(
+          circle at var(--x) var(--y),
+          transparent var(--r),
+          black calc(var(--r) + 1px)
+        );
+
+        mask: radial-gradient(
+          circle at var(--x) var(--y),
+          transparent var(--r),
+          black calc(var(--r) + 1px)
+        );
+      }
+
+      /*================================================*/
+      /* MỞ LỖ TỪ TÂM CLICK                             */
+      /*================================================*/
+
+      #welcome-screen.open {
+        animation: openPortal var(--effect-duration) linear forwards;
+      }
+
+      @keyframes openPortal {
+        from {
+          --r: 0px;
+        }
+
+        to {
+          --r: 180vmax;
+        }
+      }
+
+      /*================================================*/
+      /* NÚT                                            */
+      /*================================================*/
+
+      #start-btn {
+        position: absolute;
+
+        top: 9.2%;
+        left: 41.4%;
+
+        width: 7.4%;
+        height: 7.2%;
+
+        background: transparent;
+
+        border: none;
+
+        text-indent: -9999px;
+
+        cursor: url("./img/cursorload.png"), pointer;
+      }
+
+      /*================================================*/
+      /* SÓNG NƯỚC                                      */
+      /*================================================*/
+
+      .ripple-wave {
+        position: fixed;
+
+        left: 0;
+        top: 0;
+
+        width: 0;
+        height: 0;
+
+        transform: translate(-50%, -50%);
+
+        border-radius: 50%;
+
+        border: 8px solid rgba(70, 255, 73, 0.9);
+
+        box-shadow:
+          0 0 40px rgba(70, 255, 73, 0.8),
+          inset 0 0 25px rgba(70, 255, 104, 0.6);
+
+        pointer-events: none;
+
+        z-index: 10000;
+
+        animation: rippleExpand var(--effect-duration) linear forwards;
+      }
+
+      @keyframes rippleExpand {
+        from {
+          width: 0;
+          height: 0;
+
+          opacity: 1;
+
+          border-width: 16px;
+        }
+
+        to {
+          width: 360vmax;
+          height: 360vmax;
+
+          opacity: 0;
+
+          border-width: 1px;
+        }
+      }
     </style>
   </head>
+
   <body>
-    <h1 class="rainbow-text">ArcGis/ArcMap và QGIS</h1>
-    <pre></pre>
-    <h2>Bài 1 ArcMap</h2>
-    <p>1.1.1. Vài Thông tin về ArcGis/ArcMap</p>
-    <a href="./">Trang chủ</a>
-    <a style="color: rgb(211, 208, 9)" href="./Arc.html">ArcGis/ArcMap</a>
-    <a style="color: rgb(55, 202, 53)" href="./QGIS.html">QGIS</a>
+    <div id="welcome-screen">
+      <button id="start-btn">Normal</button>
+    </div>
+
+    <div id="main-content">
+      <h1 class="rainbow-text">ArcGis/ArcMap</h1>
+      <p style="padding-left: 25px">
+        Link dowload ArcGis 10.8:
+        <a
+          style="-webkit-text-stroke-color: blue"
+          href="https://humgedu-my.sharepoint.com/personal/gis-mdc_humg_edu_vn/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fgis%2Dmdc%5Fhumg%5Fedu%5Fvn%2FDocuments%2F8%2E%20Setups%2FArcGIS%2FArcGIS%2010%2E8%2FArcGIS%5FDesktop%5F10%2E8&ga=1"
+          target="_blank"
+          >Click vào đây</a
+        >
+      </p>
+      <h2>Nhập môn ArcGis</h2>
+      <p><strong>ArcGis/ArcMap là gì?</strong></p>
+      <p>
+        ArcGIS và ArcMap là hệ thống phần mềm thông tin địa lý (GIS) do hãng
+        Esri(Mỹ) phát triển, trong đó ArcGIS là tên của cả bộ phần mềm lớn, còn
+        ArcMap là ứng dụng chính trong bộ cũ (ArcGIS Desktop) dùng để tạo, xem,
+        chỉnh sửa và in ấn bản đồ.
+      </p>
+      <p style="padding-left: 80px">
+        <em><u>Các chức năng chính</u></em>
+      </p>
+      <ul style="padding-left: 100px">
+        <li style="padding-left: 10px">
+          Xem và chỉnh sửa dữ liệu: Cho phép người dùng thao tác với các lớp dữ
+          liệu không gian (dạng điểm, đường, vùng).
+        </li>
+        <li style="padding-left: 10px">
+          Lập bản đồ: Thiết kế và trình bày bố cục bản đồ hoàn chỉnh để xuất
+          file hoặc in ấn.
+        </li>
+        <li style="padding-left: 10px">
+          Phân tích không gian: Thực hiện các phép đo lường, chồng lớp và xử lý
+          dữ liệu địa lý.
+        </li>
+      </ul>
+      <p><b>Mối quan hệ giữa ArcGis và ArcMap</b></p>
+      <ol style="padding-left: 100px" type="A">
+        <li style="padding-left: 10px">
+          <b>ArcGIS</b>:
+          <i
+            >Là tên gọi chung của toàn bộ nền tảng hệ thống GIS, hiện nay đã
+            phát triển thành các phần mềm mới hơn như ArcGIS Pro hay ArcGIS
+            Online.</i
+          >
+        </li>
+        <li style="padding-left: 10px">
+          <b>ArcMap</b>:
+          <i
+            >Là ứng dụng truyền thống bên trong ArcGIS Desktop, hiện đang dần
+            được thay thế bởi ArcGIS Pro trong các phiên bản hiện đại của hãng
+            Esri.</i
+          >
+        </li>
+      </ol>
+      <br />
+      <hr color="yellow" />
+      <h3
+        class="rainbow-text"
+        style="font-family: Arial, Helvetica, sans-serif"
+      >
+        Thực Hành
+      </h3>
+      <p>
+        <b>Đề Bài:</b> Ví dụ lớp khoanh đất ở level 30, lớp mã loại đất ở level
+        33 trên bản đồ
+        <a
+          style="-webkit-text-stroke-color: blue"
+          href="https://humgedu-my.sharepoint.com/personal/nguyenthecong_humg_edu_vn/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fnguyenthecong%5Fhumg%5Fedu%5Fvn%2FDocuments%2F2%2ESau%20dai%20hoc%2F1%2EBai%20giang%20cao%20hoc%2FM%C3%B4%20h%C3%ACnh%20h%C3%B3a%20v%C3%A0%20ph%C3%A2n%20t%C3%ADch%20d%E1%BB%AF%20li%E1%BB%87u%20kh%C3%B4ng%20gian%2FGi%C3%A1o%20tr%C3%ACnh%2FB%C3%A0i%20t%E1%BA%ADp%201%2FKhoanhDat%5FPhuongAnThanh%2Edgn&parent=%2Fpersonal%2Fnguyenthecong%5Fhumg%5Fedu%5Fvn%2FDocuments%2F2%2ESau%20dai%20hoc%2F1%2EBai%20giang%20cao%20hoc%2FM%C3%B4%20h%C3%ACnh%20h%C3%B3a%20v%C3%A0%20ph%C3%A2n%20t%C3%ADch%20d%E1%BB%AF%20li%E1%BB%87u%20kh%C3%B4ng%20gian%2FGi%C3%A1o%20tr%C3%ACnh%2FB%C3%A0i%20t%E1%BA%ADp%201&ga=1"
+          target="_blank" >KhoanhDat_PhuongAnThanh.dgn</a
+        >
+        và lớp ranh giới quy hoạch ở level 1 bản quy hoạch
+        <a
+          style="-webkit-text-stroke-color: blue"
+          href="https://humgedu-my.sharepoint.com/personal/nguyenthecong_humg_edu_vn/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fnguyenthecong%5Fhumg%5Fedu%5Fvn%2FDocuments%2F2%2ESau%20dai%20hoc%2F1%2EBai%20giang%20cao%20hoc%2FM%C3%B4%20h%C3%ACnh%20h%C3%B3a%20v%C3%A0%20ph%C3%A2n%20t%C3%ADch%20d%E1%BB%AF%20li%E1%BB%87u%20kh%C3%B4ng%20gian%2FGi%C3%A1o%20tr%C3%ACnh%2FB%C3%A0i%20t%E1%BA%ADp%201%2FKhoanhDat%5FPhuongAnThanh%20%2D%20QuyHoach%2Edgn&parent=%2Fpersonal%2Fnguyenthecong%5Fhumg%5Fedu%5Fvn%2FDocuments%2F2%2ESau%20dai%20hoc%2F1%2EBai%20giang%20cao%20hoc%2FM%C3%B4%20h%C3%ACnh%20h%C3%B3a%20v%C3%A0%20ph%C3%A2n%20t%C3%ADch%20d%E1%BB%AF%20li%E1%BB%87u%20kh%C3%B4ng%20gian%2FGi%C3%A1o%20tr%C3%ACnh%2FB%C3%A0i%20t%E1%BA%ADp%201&ga=1"
+          target="_blank">KhoanhDat_PhuongAnThanh-QuyHoach.dgn</a>
+        <p style="padding-left: 80px;"><b>Yêu cầu:</b></p>
+        <ul style="padding-left: 100px">
+          <li style="padding-left: 10px">Tạo Geodatabas(Cơ sở dữ liệu địa lý) có tên QuyHoach.gdb, cho các lớp vào</li>
+          <li style="padding-left: 10px">Tính, thống kê diện tích chi tiết theo từng loại đất trong khu vực quy hoạch.</li>
+        </ul>
+      </p>
+      <p><strong>*Các bước thực hiện:</strong></p>
+      <ol style="padding-left: 100px;" type="1">
+        <li style="padding: 20px;">Feature class to feature class <br> <br>
+          <img width="600px" src="./imgth/Picture1.png" alt="ảnh hướng dẫn"><br>
+          <img width="900px" src="./imgth/Picture2.png" alt="ảnh hướng dẫn"><br>
+          <img width="900px" src="./imgth/Picture3.png" alt="ảnh hướng dẫn"><br>
+          <img width="900px" src="./imgth/Picture4.png" alt="ảnh hướng dẫn"></li>
+        <li style="padding: 20px;">Feature to polygon <br> <br>
+          <img width="900px" src="./imgth/Picture5.png" alt="ảnh hướng dẫn"><br>
+          <img width="900px" src="./imgth/Picture6.png" alt="ảnh hướng dẫn"></li>
+        <li style="padding: 20px;">Add loại đất vào (Làm tương tự các bước trên) <br> <br>
+          <img width="900px" src="./imgth/Picture7.png" alt="ảnh hướng dẫn"><br>
+          <img width="900px" src="./imgth/Picture8.png" alt="ảnh hướng dẫn"></li>
+        <li style="padding: 20px;">Join MaLoaiDat vào không gian (Spatial join) <br> <br>
+          <img width="900px" src="./imgth/Picture9.png" alt="ảnh hướng dẫn"><br>
+          <img width="900px" src="./imgth/Picture10.png" alt=""></li>
+        <li style="padding: 20px;">Xoá các trường(Fields) <br> <br>
+          <img width="900px" src="./imgth/Picture11.png" alt="ảnh hướng dẫn"><br>
+          <img width="900px" src="./imgth/Picture12.png" alt="ảnh hướng dẫn"><br>
+          <img width="900px" src="./imgth/Picture13.png" alt="ảnh hướng dẫn"></li>
+        <li style="padding: 20px;">Cho lớp ranh quy hoạch vào ArcGIS <br> <br>
+          <img width="900px" src="./imgth/Picture14.png" alt="ảnh hướng dẫn"><br>
+          <img width="900px" src="./imgth/Picture15.png" alt="ảnh hướng dẫn"><br>
+          <img width="900px" src="./imgth/Picture16.png" alt="ảnh hướng dẫn"></li>
+        <li style="padding: 20px;">Chồng xếp lớp vung_QuyHoạch lên vung_MaLoaiDat và cắt lấy phần quy hoạch (thu hồi). Clip <br> <br>
+          <img width="900px" src="./imgth/Picture17.png" alt="ảnh hướng dẫn"><br>
+          <img width="900px" src="./imgth/Picture18.png" alt="ảnh hướng dẫn"><br>
+          <img width="900px" src="./imgth/Picture19.png" alt="ảnh hướng dẫn"></li>
+        <li style="padding: 20px;">Xuất các khoanh đất nằm trong ranh giới quy hoạch ra excel và tổng hợp theo loại đất <br> <br>
+          <img width="900px" src="./imgth/Picture20.png" alt="ảnh hướng dẫn"><br>
+          <img width="900px" src="./imgth/Picture21.png" alt="ảnh hướng dẫn"></li>
+      </ol>
+      <p style="text-align: center;font-size: 35px;"><b>Các ý chính</b></p>
+      <p style="padding-left: 80px;"><u>CHUẨN HOÁ DỮ LIỆU</u>
+        <ol style="padding-left: 100px;" type="1">
+          <li style="padding-left: 10px;" >Feature class to feature class (<i>Chuyển lớp đối tượng sang lớp đối tượng mới</i>)</li>
+          <li style="padding-left: 10px;" >Feature to polygon (<i>Chuyển đối tượng thành vùng (Polygon)</i>)</li>
+          <li style="padding-left: 10px;" >Spatial join (<i>Ghép nối dữ liệu theo vị trí không gian</i>)</li>
+          <li style="padding-left: 10px;" >Delete field (<i>Xóa trường dữ liệu</i>), Addfield (<i>Thêm trường dữ liệu</i>), Calculate field (<i>Tính toán giá trị trường</i>)</li>
+        </ol></p>
+        <p style="padding-left: 80px;"><u>PHÂN TÍCH KHÔNG GIAN</u>
+          <ol style="padding-left: 100px;" type="1">
+            <li style="padding-left: 10px;" >Clip <i>Cắt lớp dữ liệu theo vùng giới hạn</i></li>
+            <li style="padding-left: 10px;" >Erase <i>Xóa phần dữ liệu theo vùng</i></li>
+            <li style="padding-left: 10px;" >Update <i>Cập nhật dữ liệu không gian</i></li>
+            <li style="padding-left: 10px;" >Split <i>Chia tách dữ liệu</i></li>
+            <li style="padding-left: 10px;" >Dissolve <i>Hòa tan (gộp đối tượng)</i></li>
+            <li style="padding-left: 10px;" >Union <i>Hợp nhất không gian</i></li>
+            <li style="padding-left: 10px;" >Intersect <i>Giao cắt</i></li>
+            <li style="padding-left: 10px;" >Identity <i>Nhận dạng (gán thuộc tính vùng chồng lấn)</i></li>
+          </ol></p>
+
+    </div>
+
+    <script>
+      const btn = document.getElementById("start-btn");
+      const screen = document.getElementById("welcome-screen");
+
+      btn.addEventListener("click", (e) => {
+        const x = e.clientX;
+        const y = e.clientY;
+
+        screen.style.setProperty("--x", x + "px");
+        screen.style.setProperty("--y", y + "px");
+
+        screen.classList.add("open");
+
+        const ripple = document.createElement("div");
+
+        ripple.className = "ripple-wave";
+
+        ripple.style.left = x + "px";
+        ripple.style.top = y + "px";
+
+        document.body.appendChild(ripple);
+
+        setTimeout(() => {
+          screen.remove();
+          ripple.remove();
+        }, 3500);
+      });
+    </script>
   </body>
 </html>

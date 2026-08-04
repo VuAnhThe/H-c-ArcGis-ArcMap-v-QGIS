@@ -1,5 +1,6 @@
 body {
-  background-image: url(./backgroung.jpg);
+  cursor: url("./img/cursor.png"), default;
+  background-image: url("./img/backgroung.jpg");
   background-size: cover; /* Tự động co giãn ảnh để phủ kín toàn bộ màn hình */
   background-position: center; /*Giữ ảnh luôn căn giữa màn hình */
   background-repeat: no-repeat; /* Không lặp lại ảnh nếu màn hình quá lớn */
@@ -9,26 +10,69 @@ body {
 }
 
 .rainbow-text {
+  /* 1. KHUYÊN DÙNG: Đổi sang font chữ bo tròn đậm nét để dải màu hiện rõ hơn */
+  font-family: "Fredoka", "Arial Black", sans-serif;
   font-size: 40px;
   font-weight: bold;
+
+  /* 2. Tạo dải màu gradient (Đã đổi sang tông pastel cho mịn và hợp nền) */
   background: linear-gradient(
     to right,
-    red,
-    orange,
-    yellow,
-    green,
-    blue,
-    indigo,
-    violet
+    #ff6b6b,
+    #feca57,
+    #1dd1a1,
+    #ff9ff3,
+    #54a0ff
   );
   -webkit-text-stroke-width: 0.9px; /* Độ dày của viền */
-  -webkit-text-stroke-color: rgb(60, 59, 59); /* Màu sắc của viền (nên chọn trắng hoặc đen để nổi bật) */
+  -webkit-text-stroke-color: rgb(90, 89, 89);
+  /* 3. Đưa màu vào trong lòng chữ */
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
   color: transparent;
+
+  filter: drop-shadow(0px 0px 12px black);
 }
 h1 {
   text-align: center;
   text-transform: uppercase;
+  padding-top: 20px;
+}
+h2 {
+  padding-left: 40px;
+  -webkit-text-stroke-width: 0.9px; /* Độ dày của viền */
+  -webkit-text-stroke-color: rgb(41, 41, 41);
+  filter: drop-shadow(0px 0px 15px rgb(79, 79, 79));
+}
+h3 {
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 32px;
+  -webkit-text-stroke-width: 0.9px; /* Độ dày của viền */
+  -webkit-text-stroke-color: rgb(41, 41, 41);
+  filter: drop-shadow(0px 0px 12px gray);
+}
+p {
+  padding-left: 60px;
+  -webkit-text-stroke-width: 0.9px; /* Độ dày của viền */
+  -webkit-text-stroke-color: rgb(41, 41, 41);
+  filter: drop-shadow(0px 0px 12px rgb(79, 79, 79));
+}
+a {
+  cursor: url("./img/cursorload.png"), pointer;
+}
+ul,
+ol,
+li {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 18px;
+  -webkit-text-stroke-width: 0.9px; /* Độ dày của viền */
+  -webkit-text-stroke-color: rgb(41, 41, 41);
+  filter: drop-shadow(0px 0px 12px gray);
+}
+img {
+  margin: 0 auto;
+  display: block;
+  text-align: center;
 }
